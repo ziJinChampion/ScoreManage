@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wx.dao.AdminDAO">
+	<!-- 根据id查询管理员信息 -->
+	<select id="findAdminById" parameterType="int" resultType="Admin">
+		select * from tb_admin where admin_id=#{admin_id}
+	</select>
+	<!-- 查询所有学生 -->
+	<select id="findAllStudent" resultType = "Student">
+		select * from tb_student 
+	</select>
+	<!-- 查询所有教师 -->
+	<select id="findAllTeacher" resultType ="Teacher">
+		select * from tb_teacher
+	</select>
+	<!-- 添加学生 -->
+	<insert id="AddStudent">
+		INSERT INTO tb_student (stu_id,stu_name,stu_pwd)VALUES(#{stu_id},#{stu_name},#{stu_pwd})
+	</insert>
+	<!-- 添加教师 -->
+	<insert id="AddTeacher">
+		INSERT INTO tb_teacher (teacher_id,teacher_name,teacher_pwd,teacher_subject)VALUES(#{teacher_id},#{teacher_name},#{teacher_pwd},#{teacher_subject})
+	</insert>
+	<!-- 删除教师 -->
+	<delete id="DelTea">
+		DELETE FROM tb_teacher WHERE teacher_id = #{teacher_id}
+	</delete>
+	<!-- 删除学生 -->
+	<delete id="DelStu">
+		DELETE FROM tb_student WHERE stu_id = #{stu_id}
+	</delete>
+	<!-- 修改教师 -->
+	<update id="UpdateTea">
+		UPDATE tb_teacher SET teacher_id=#{teacher_id},teacher_name=#{teacher_name},teacher_subject=#{teacher_subject},teacher_pwd=#{teacher_pwd} WHERE teacher_id=#{teacher_id} 
+	</update>
+	
+	<!-- 修改学生 -->
+	<update id="UpdateStu">
+		UPDATE tb_student SET stu_id=#{stu_id},stu_name=#{stu_name},stu_pwd=#{stu_pwd} WHERE stu_id=#{stu_id}
+	</update>
+	
+
+</mapper>
